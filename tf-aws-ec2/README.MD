@@ -43,8 +43,8 @@ module "ec2" {
 ```
 // Provider
 aws_region = "ap-southeast-1"
-access_key = "AKIAWSZXKGX2A2ZAZHEZ"
-secret_key = "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"
+access_key = "abcxyz"
+secret_key = "12345abc"
 //EC2
 configuration = [
   {
