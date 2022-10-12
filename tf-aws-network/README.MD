@@ -6,7 +6,7 @@ Put this configuration into your inventory
 
 ```
 module "security_group" {
-  source                 = "git@gitlab.jayeson.com.sg:devops/terraform-modules.git//tf-aws-network"
+  source                 = "https://github.com/mach1el/terraform-aws.git//tf-aws-network"
   aws_region             = "ap-northeast-1"
   access_key             = "qwerty123"
   secret_key             = "zxcvbnm456"
@@ -21,7 +21,7 @@ You can also put variables into `terraform.tfvars`, it must same path with `main
 
 ```
 module "security_group" {
-  source                 = "git@gitlab.jayeson.com.sg:devops/terraform-modules.git//tf-aws-network"
+  source                 = "https://github.com/mach1el/terraform-aws.git//tf-aws-network"
   aws_region             = var.aws_region
   access_key             = var.access_key
   secret_key             = var.secret_key
