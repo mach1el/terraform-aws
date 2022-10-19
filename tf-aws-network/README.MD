@@ -1,5 +1,16 @@
 # Terraform AWS Network - VPC | Subnet | Route Table | IGW | NAT gateway | Elastic IPs
 
+* Can set condition to create resource eg. `create_priv_subnet = false`
+
+## Variables conditional 
+
+* create_priv_subnet
+* create_publ_subnet
+* create_igw
+* create_nat_gw
+* create_eip
+* create_privRT
+* create_publRT
 
 ## Example
 Put this configuration into your inventory
@@ -41,8 +52,14 @@ access_key = "qwerty123"
 secret_key = "zxcvbnm456"
 
 // Network
-vpc_cdir_block         = "10.30.0.0/16"
-publ_subnet_cdir_block = "10.30.1.0/24"
-priv_subnet_cdir_block = "10.30.2.0/24"
-tag_name               = "StagingUnity"
+vpc_cdir_block         = "10.98.0.0/16"
+priv_subnet_cdir_block = "10.98.1.0/24"
+publ_subnet_cdir_block = "10.98.2.0/24"
+tag_name               = "KubeClusters"
+
+//Conditions
+create_priv_subnet = false
+create_nat_gw      = false
+create_eip         = false
+create_privRT      = false
 ```
