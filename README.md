@@ -3,6 +3,6 @@ Terraform AWS modules
 
 
 ## Modules
-* [EC2](/tf-aws-ec2)
-* [Networking](/tf-aws-network)
-* [Security Group](/tf-aws-security-group)
+* [EC2](/ec2)
+* [Basic Networking](/basic-networking)
+* [Security Groups](/security-group)
