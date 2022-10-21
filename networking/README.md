@@ -23,7 +23,7 @@ You can also put variables into `terraform.tfvars`, it must same path with `main
 
 ```
 module "ec2" {
-  source         = "https://github.com/mach1el/terraform-aws.git//ec2"
+  source         = "https://github.com/mach1el/terraform-aws.git//networking"
   aws_region     = var.aws_region
   access_key     = var.access_key
   secret_key     = var.secret_key
