@@ -6,7 +6,7 @@ Put this configuration into your inventory
 
 ```
 module "security_group" {
-  source     = "https://github.com/mach1el/terraform-aws.git//tf-aws-security-group"
+  source     = "https://github.com/mach1el/terraform-aws.git//security-groups"
   aws_region = "ap-northeast-1"
   access_key = "qwerty123"
   secret_key = "zxcvbnm456"
