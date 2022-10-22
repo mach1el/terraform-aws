@@ -1,2 +1,2 @@
 variable cloneList {}
-variable AMIList {}
+variable AMIsList {}
