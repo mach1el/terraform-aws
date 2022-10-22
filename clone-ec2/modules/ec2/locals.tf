@@ -3,5 +3,5 @@ locals {
 }
 
 locals {
-  AMIs = flatten(var.AMIList)
+  AMIs = flatten(toset(var.AMIList))
 }
