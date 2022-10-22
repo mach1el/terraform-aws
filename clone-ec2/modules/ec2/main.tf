@@ -7,7 +7,7 @@ resource "aws_instance" "new" {
   key_name               = "${data.aws_instance.source_instance[each.value.name].key_name}"
   
   root_block_device {
-    volume_size = "${data.aws_instance.source_instance[each.value.name].ebs_block_device.volume_size}"
+    volume_size = "${lookup(data.aws_instance.source_instance[each.value.name].ebs_block_device,volume_size)}"
     volume_type = "${data.aws_instance.source_instance[each.value.name].ebs_block_device.volume_type}"
     tags   = {
       Name = "${data.aws_instance.source_instance[each.value.name].tags.Name}-clone"
