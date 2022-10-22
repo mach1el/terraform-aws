@@ -1,3 +1,3 @@
-locals {
-  cloneList = flatten(var.cloneList)
-}
+# locals {
+#   cloneList = flatten(var.cloneList)
+# }
