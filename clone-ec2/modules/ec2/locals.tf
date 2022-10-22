@@ -5,7 +5,7 @@ locals {
 locals {
   cloned = [
     {
-      for ami in var.AMIList: ami.tags["Name"] => ami.id
+      for ami in var.AMIList: ami.id => ami
     }
   ]
 }
