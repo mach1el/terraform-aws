@@ -1,4 +1,4 @@
 module "cloneAMI" {
   source    = "./modules/clone"
-  cloneList = variable.cloneList
+  cloneList = var.cloneList
 }
