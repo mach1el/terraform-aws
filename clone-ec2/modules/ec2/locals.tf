@@ -5,8 +5,8 @@ locals {
 locals {
   cloned = [
     for cloned_ec2 in var.AMIsList: {
-      id   = clone_ec2.id
-      name = clone_ec2.tags.Name 
+      id   = cloned_ec2.id
+      name = cloned_ec2.tags.Name 
     }
   ]
 }
