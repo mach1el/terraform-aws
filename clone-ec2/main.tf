@@ -7,5 +7,5 @@ module "ec2" {
  source     = "./modules/ec2"
  cloneList  = var.cloneList
  AMIsList   = module.cloneAMI.AMIs
- depends_on = [module.cloneAMI.AMIs]
+ depends_on = [module.cloneAMI]
 }
