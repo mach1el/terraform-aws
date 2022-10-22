@@ -3,5 +3,13 @@ locals {
 }
 
 locals {
-  AMIs = flatten(toset(var.AMIList))
+  cloned = [
+    {
+      for ami in var.AMIList: ami.tags["Name"] => ami.id
+    }
+  ]
+}
+
+locals {
+  AMIs = flatten(local.cloned)
 }
