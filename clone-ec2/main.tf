@@ -4,6 +4,7 @@ module "cloneAMI" {
 }
 
 module "ec2" {
- source  = "./modules/ec2"
- AMIList = module.cloneAMI.AMIs  
+ source    = "./modules/ec2"
+ cloneList = var.cloneList
+ AMIList   = module.cloneAMI.AMIs
 }
