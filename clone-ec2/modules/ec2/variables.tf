@@ -1,2 +1,0 @@
-variable cloneList {}
-variable AMIsList {}

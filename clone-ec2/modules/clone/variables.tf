@@ -1,1 +1,1 @@
-variable cloneList {}
+variable ec2List {}
