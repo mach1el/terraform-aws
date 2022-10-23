@@ -50,6 +50,9 @@ public_net     = ["10.98.10.0/24","10.98.11.0/24"]
 ## Input
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
+|<a name="aws_region"></a> [aws_region](#) | Select your region | `string` | `null` | yes |
+|<a name="access_key"></a> [access_key](#) | Your AMI access key id | `string` | `null` | yes |
+|<a name="secret_key"></a> [secret_key](#) | Your AMI secret key | `string` | `null` | yes |
 |<a name="vpc_cdir_block"></a> [vpc_cdir_block](#) | Your VPC range | `string` | `null` | yes |
 |<a name="private_net"></a> [private_net](#) | List of subnets range | `list` | `null` | yes |
 |<a name="public_net"></a> [public_net](#) | List of subnets range | `list` | `null` | yes |

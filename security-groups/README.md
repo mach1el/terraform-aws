@@ -82,3 +82,10 @@ sgData = [
   }
 ]
 ```
+
+## Input
+| Name | Description | Type | Default | Required |
+|------|-------------|------|---------|:--------:|
+|<a name="aws_region"></a> [aws_region](#) | Select your region | `string` | `null` | yes |
+|<a name="access_key"></a> [access_key](#) | Your AMI access key id | `string` | `null` | yes |
+|<a name="secret_key"></a> [secret_key](#) | Your AMI secret key | `string` | `null` | yes |
