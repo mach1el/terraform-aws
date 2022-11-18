@@ -3,7 +3,7 @@ variable "aws_region" {}
 variable "access_key" {}
 variable "secret_key" {}
 
-// Route53
+// VPC
 variable "vpc_id" {}
 
 // Security groups
