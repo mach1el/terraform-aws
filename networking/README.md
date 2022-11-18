@@ -22,7 +22,7 @@ module "networking" {
 You can also put variables into `terraform.tfvars`, it must same path with `main.tf` inventory
 
 ```
-module "ec2" {
+module "networking" {
   source         = "git::https://github.com/mach1el/terraform-aws.git//networking"
   aws_region     = var.aws_region
   access_key     = var.access_key
