@@ -11,11 +11,11 @@ variable private_zone_id {
 }
 
 variable public_records {
-  type    = list(map())
+  type    = list(map(any))
   default = []
 }
 
 variable private_records {
-  type    = list(map())
+  type    = list(map(any))
   default = []
 }
