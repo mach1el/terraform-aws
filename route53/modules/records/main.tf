@@ -4,7 +4,7 @@ resource "aws_route53_record" "public_records" {
   name     = each.value.name
   type     = each.value.type
   ttl      = each.value.ttl
-  records  = each.value.records
+  records  = try(each.value.records,false)
 }
 
 resource "aws_route53_record" "private_records" {
@@ -13,5 +13,5 @@ resource "aws_route53_record" "private_records" {
   name     = each.value.name
   type     = each.value.type
   ttl      = each.value.ttl
-  records  = each.value.records
+  records  = try(each.value.records,false)
 }

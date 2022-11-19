@@ -11,11 +11,13 @@ variable private_zone_id {
 }
 
 variable public_records {
-  type    = list(map(any))
-  default = []
+  description = "List of objects of DNS records"
+  type        = any
+  default     = []
 }
 
 variable private_records {
-  type    = list(map(any))
-  default = []
+  description = "List of objects of DNS records"
+  type        = any
+  default     = []
 }
