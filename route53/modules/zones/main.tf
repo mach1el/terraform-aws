@@ -2,13 +2,24 @@ resource "aws_route53_zone" "public" {
   name = var.domain_name
 }
 
+# resource "aws_route53_zone" "private" {
+#   name = var.domain_name
+#   dynamic "vpc" {
+#     for_each = var.vpc_ids
+#     content {
+#       vpc_id     = vpc.value["vpc_id"]
+#       vpc_region = vpc.value["vpc_region"]
+#     }
+#   }
+# }
+
 resource "aws_route53_zone" "private" {
   name = var.domain_name
   dynamic "vpc" {
-    for_each = var.vpc_ids
+    for_each = { for k,v in var.vpc_ids: k => v if v.vpc_id != null }
     content {
-      vpc_id     = vpc.value["vpc_id"]
-      vpc_region = vpc.value["vpc_region"]
+      vpc_id     = vpc.value.vpc_id
+      vpc_region = vpc.value.vpc_region
     }
   }
 }
