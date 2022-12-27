@@ -39,7 +39,7 @@ You can also put variables into `terraform.tfvars`, it must same path with `main
 
 ```
 module "security_group" {
-  source     = "git::https://github.com/mach1el/terraform-aws.git//tf-aws-security-group"
+  source     = "git::https://github.com/mach1el/terraform-aws.git//security-group"
   aws_region = var.aws_region
   access_key = var.access_key
   secret_key = var.secret_key
