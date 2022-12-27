@@ -3,6 +3,7 @@ Terraform AWS modules
 
 ## Modules
 * [Clone EC2](/clone-ec2)
+* [Create AMIs](/create-amis)
 * [EC2](/ec2)
 * [Basic Networking](/networking)
 * [Route53](/route53)
