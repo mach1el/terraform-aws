@@ -34,7 +34,7 @@ resource "aws_internet_gateway" "igw" {
   }
 }
 
-resource "aws_eip" "pubIP" {
+resource "aws_eip" "NATpubIP" {
   count = "${var.create_private_subnet}" == true ? "${length(var.private_net)}" : 0
   vpc   = true
   tags = {
@@ -43,7 +43,7 @@ resource "aws_eip" "pubIP" {
 }
 
 resource "aws_nat_gateway" "NATgw" {
-  count         = "${var.create_private_subnet}" == true ? "${length(aws_subnet.private_subnet)}" : 0
+  count         = "${var.create_private_subnet}" == true ? 1 : 0 #"${length(aws_subnet.private_subnet)}"
   allocation_id = "${aws_eip.pubIP[count.index].id}"
   subnet_id     = "${aws_subnet.private_subnet[count.index].id}"
   tags = {
