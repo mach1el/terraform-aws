@@ -11,11 +11,13 @@ module "public_subnet_az" {
 }
 
 module "networking" {
-  source            = "./modules/networking"
-  vpc_cdir_block    = var.vpc_cdir_block
-  private_net       = var.private_net
-  public_net        = var.public_net
-  private_subnet_az = module.private_subnet_az.result
-  public_subnet_az  = module.public_subnet_az.result
-  tag               = var.tag
+  source                = "./modules/networking"
+  vpc_cdir_block        = var.vpc_cdir_block
+  private_net           = var.private_net
+  public_net            = var.public_net
+  create_private_subnet = var.create_private_subnet
+  create_public_subnet  = var.create_public_subnet
+  private_subnet_az     = module.private_subnet_az.result
+  public_subnet_az      = module.public_subnet_az.result
+  tag                   = var.tag
 }
