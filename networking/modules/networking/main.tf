@@ -11,9 +11,12 @@ resource "aws_subnet" "private_subnet" {
   vpc_id            = "${aws_vpc.new_vpc.id}"
   cidr_block        = "${var.private_net[count.index]}"
   availability_zone = "${element(var.private_subnet_az,count.index)}"
-  tags = {
-    Name = "${var.tag}-${1+count.index} Private"
-  }
+  tags = merge(
+    {
+      Name = "${var.tag}-${1+count.index} Private"
+    },
+    var.private_subnet_tags
+  )
 }
 
 resource "aws_subnet" "public_subnet" {
@@ -21,9 +24,12 @@ resource "aws_subnet" "public_subnet" {
   vpc_id            = "${aws_vpc.new_vpc.id}"
   cidr_block        = "${var.public_net[count.index]}"
   availability_zone = "${element(var.public_subnet_az,count.index)}"
-  tags = {
-    Name = "${var.tag}-${1+count.index} Public"
-  }
+  tags = merge(
+    {
+      Name = "${var.tag}-${1+count.index} Public"
+    },
+    var.public_subnet_tags
+  )
 }
 
 resource "aws_internet_gateway" "igw" {
