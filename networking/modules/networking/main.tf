@@ -44,7 +44,7 @@ resource "aws_eip" "NATpubIP" {
 
 resource "aws_nat_gateway" "NATgw" {
   count         = "${var.create_private_subnet}" == true ? 1 : 0 #"${length(aws_subnet.private_subnet)}"
-  allocation_id = "${aws_eip.pubIP[count.index].id}"
+  allocation_id = "${aws_eip.NATpubIP[count.index].id}"
   subnet_id     = "${aws_subnet.private_subnet[count.index].id}"
   tags = {
     Name = "${var.tag}-${1+count.index} NATgw"
