@@ -11,6 +11,18 @@ variable tag {
   default = "My Clusters" 
 }
 
+variable private_subnet_tags {
+  description = "Additional tags for the public subnets"
+  type        = map(string)
+  default     = {}
+}
+
+variable public_subnet_tags {
+  description = "Additional tags for the public subnets"
+  type        = map(string)
+  default     = {}
+}
+
 // Conditions
 variable create_private_subnet {
   type    = bool

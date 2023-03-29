@@ -20,4 +20,6 @@ module "networking" {
   private_subnet_az     = module.private_subnet_az.result
   public_subnet_az      = module.public_subnet_az.result
   tag                   = var.tag
+  private_subnet_tags   = var.private_subnet_tags
+  public_subnet_tags    = var.public_subnet_tags
 }
