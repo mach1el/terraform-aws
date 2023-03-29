@@ -52,3 +52,5 @@ public_net     = ["10.98.10.0/24","10.98.11.0/24"]
 |<a name="create_public_subnet"></a> [create_public_subnet](#) | Conditional variable for create public subnet | `boolean` | `true` | no |
 |<a name="create_igw"></a> [create_igw](#) | Conditional variable for create internet gateway | `boolean` | `true` | no |
 |<a name="tag"></a> [tag](#) | Tag your resource | `string` | `My Clusters` | no |
+|<a name="private_subnet_tags"></a> [private_subnet_tags](#) | Additional tags for subnet | `map(string)` | `{}` | no |
+|<a name="public_subnet_tags"></a> [public_subnet_tags](#) | Additional tags for subnet | `map(string)` | `{}` | no |
