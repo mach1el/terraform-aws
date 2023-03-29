@@ -26,7 +26,7 @@ variable public_subnet_tags {
 // Conditions
 variable create_private_subnet {
   type    = bool
-  default = false
+  default = true
 }
 variable create_public_subnet {
   type    = bool
