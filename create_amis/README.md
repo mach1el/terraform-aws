@@ -6,7 +6,7 @@ Put this configuration into your inventory
 
 ```
 module "clone_ec2" {
-  source     = "git::https://github.com/mach1el/terraform-aws.git//create-amis"
+  source     = "git::https://github.com/mach1el/terraform-aws.git//create_amis"
   aws_region = "ap-northeast-1"
   ec2_ids = [
     "i-abc123"
@@ -18,9 +18,10 @@ You can also put variables into `terraform.tfvars`, it must same path with `main
 
 ```
 module "security_group" {
-  source     = "git::https://github.com/mach1el/terraform-aws.git//create-amis"
+  source     = "git::https://github.com/mach1el/terraform-aws.git//create_amis"
   aws_region = var.aws_region
   ec2_ids    = var.ec2_ids
+}
 ```
 
 `terraform.tfvars`

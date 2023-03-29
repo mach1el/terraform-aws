@@ -6,7 +6,7 @@ Put this configuration into your inventory
 
 ```
 module "security_group" {
-  source     = "git::https://github.com/mach1el/terraform-aws.git//security-groups"
+  source     = "git::https://github.com/mach1el/terraform-aws.git//security_groups"
   aws_region = "ap-northeast-1"
   vpc_id     = "vpc-123456789"
   sgData     = [
@@ -37,7 +37,7 @@ You can also put variables into `terraform.tfvars`, it must same path with `main
 
 ```
 module "security_group" {
-  source     = "git::https://github.com/mach1el/terraform-aws.git//security-group"
+  source     = "git::https://github.com/mach1el/terraform-aws.git//security_group"
   aws_region = var.aws_region
   vpc_id     = var.vpc_id
   sgData     = var.sgData

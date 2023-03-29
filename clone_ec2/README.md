@@ -7,7 +7,7 @@ Put this configuration into your inventory
 
 ```
 module "clone_ec2" {
-  source     = "git::https://github.com/mach1el/terraform-aws.git//clone-ec2"
+  source     = "git::https://github.com/mach1el/terraform-aws.git//clone_ec2"
   aws_region = "ap-northeast-1"
   ec2List    = ["i-qwerty098765"]
 }
@@ -17,7 +17,7 @@ You can also put variables into `terraform.tfvars`, it must same path with `main
 
 ```
 module "ec2" {
-  source     = "git::https://github.com/mach1el/terraform-aws.git//clone-ec2"
+  source     = "git::https://github.com/mach1el/terraform-aws.git//clone_ec2"
   aws_region = var.aws_region
   ec2List    = var.ec2List
 }
