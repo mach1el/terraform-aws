@@ -10,8 +10,6 @@ Put this configuration into your inventory
 module "networking" {
   source         = "git::https://github.com/mach1el/terraform-aws.git//networking"
   aws_region     = "ap-northeast-1"
-  access_key     = "qwerty123"
-  secret_key     = "zxcvbnm456"
   vpc_cdir_block = "10.10.98.0/16"
   private_net    = ["10.98.1.0/24","10.98.2.0/24"]
   public_net     = ["10.98.10.0/24","10.98.11.0/24"]
@@ -25,8 +23,6 @@ You can also put variables into `terraform.tfvars`, it must same path with `main
 module "networking" {
   source         = "git::https://github.com/mach1el/terraform-aws.git//networking"
   aws_region     = var.aws_region
-  access_key     = var.access_key
-  secret_key     = var.secret_key
   vpc_cdir_block = var.vpc_cdir_block
   private_net    = var.private_net
   public_net     = var.public_net
@@ -39,8 +35,6 @@ module "networking" {
 ```
 // Provider
 aws_region = "ap-southeast-1"
-access_key = "abcxyz"
-secret_key = "12345abc"
 // Network
 vpc_cdir_block = "10.98.0.0/16"
 private_net    = ["10.98.1.0/24","10.98.2.0/24"]
@@ -51,8 +45,6 @@ public_net     = ["10.98.10.0/24","10.98.11.0/24"]
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 |<a name="aws_region"></a> [aws_region](#) | Select your region | `string` | `null` | yes |
-|<a name="access_key"></a> [access_key](#) | Your AMI access key id | `string` | `null` | yes |
-|<a name="secret_key"></a> [secret_key](#) | Your AMI secret key | `string` | `null` | yes |
 |<a name="vpc_cdir_block"></a> [vpc_cdir_block](#) | Your VPC range | `string` | `null` | yes |
 |<a name="private_net"></a> [private_net](#) | List of subnets range | `list` | `null` | yes |
 |<a name="public_net"></a> [public_net](#) | List of subnets range | `list` | `null` | yes |
