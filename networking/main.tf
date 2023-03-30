@@ -1,14 +1,14 @@
-module "public_subnet_az" {
-  source     = "./modules/random_shuffle"
-  input      = "${data.aws_availability_zones.available.names}"
-  subnetList = var.public_net
-}
+# module "public_subnet_az" {
+#   source     = "./modules/random_shuffle"
+#   input      = "${data.aws_availability_zones.available.names}"
+#   subnetList = var.public_net
+# }
 
-module "private_subnet_az" {
-  source     = "./modules/random_shuffle"
-  input      = "${data.aws_availability_zones.available.names}"
-  subnetList = var.private_net
-}
+# module "private_subnet_az" {
+#   source     = "./modules/random_shuffle"
+#   input      = "${data.aws_availability_zones.available.names}"
+#   subnetList = var.private_net
+# }
 
 module "networking" {
   source                = "./modules/networking"

@@ -10,7 +10,7 @@ resource "aws_subnet" "public_subnet" {
   count             = "${var.create_public_subnet}" == true ? "${length(var.private_net)}" : 0
   vpc_id            = "${aws_vpc.new_vpc.id}"
   cidr_block        = "${var.public_net[count.index]}"
-  availability_zone = "${element(var.public_subnet_az,count.index)}"
+  availability_zone = "${data.aws_availability_zones.available.names[count.index]}"
   tags = merge(
     {
       Name = "${var.tag}-${1+count.index} Public"
@@ -23,7 +23,7 @@ resource "aws_subnet" "private_subnet" {
   count             = "${var.create_private_subnet}" == true ? "${length(var.private_net)}" : 0
   vpc_id            = "${aws_vpc.new_vpc.id}"
   cidr_block        = "${var.private_net[count.index]}"
-  availability_zone = "${element(var.private_subnet_az,count.index)}"
+  availability_zone = "${data.aws_availability_zones.available.names[count.index]}"
   tags = merge(
     {
       Name = "${var.tag}-${1+count.index} Private"
