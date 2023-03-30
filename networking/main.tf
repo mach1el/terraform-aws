@@ -17,8 +17,6 @@ module "networking" {
   public_net            = var.public_net
   create_private_subnet = var.create_private_subnet
   create_public_subnet  = var.create_public_subnet
-  public_subnet_az      = module.public_subnet_az.result
-  private_subnet_az     = module.private_subnet_az.result
   tag                   = var.tag
   public_subnet_tags    = var.public_subnet_tags
   private_subnet_tags   = var.private_subnet_tags
