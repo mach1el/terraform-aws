@@ -1,7 +1,3 @@
-// AZ
-variable private_subnet_az {}
-variable public_subnet_az {}
-
 // Networking
 variable vpc_cdir_block {}
 variable private_net {}
