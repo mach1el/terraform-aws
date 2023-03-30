@@ -32,7 +32,3 @@ variable create_public_subnet {
   type    = bool
   default = true
 }
-variable create_igw {
-  type    = bool
-  default = true
-}

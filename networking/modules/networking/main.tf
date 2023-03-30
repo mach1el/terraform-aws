@@ -6,19 +6,6 @@ resource "aws_vpc" "new_vpc" {
   }
 }
 
-resource "aws_subnet" "private_subnet" {
-  count             = "${var.create_private_subnet}" == true ? "${length(var.private_net)}" : 0
-  vpc_id            = "${aws_vpc.new_vpc.id}"
-  cidr_block        = "${var.private_net[count.index]}"
-  availability_zone = "${element(var.private_subnet_az,count.index)}"
-  tags = merge(
-    {
-      Name = "${var.tag}-${1+count.index} Private"
-    },
-    var.private_subnet_tags
-  )
-}
-
 resource "aws_subnet" "public_subnet" {
   count             = "${var.create_public_subnet}" == true ? "${length(var.private_net)}" : 0
   vpc_id            = "${aws_vpc.new_vpc.id}"
@@ -32,8 +19,20 @@ resource "aws_subnet" "public_subnet" {
   )
 }
 
+resource "aws_subnet" "private_subnet" {
+  count             = "${var.create_private_subnet}" == true ? "${length(var.private_net)}" : 0
+  vpc_id            = "${aws_vpc.new_vpc.id}"
+  cidr_block        = "${var.private_net[count.index]}"
+  availability_zone = "${element(var.private_subnet_az,count.index)}"
+  tags = merge(
+    {
+      Name = "${var.tag}-${1+count.index} Private"
+    },
+    var.private_subnet_tags
+  )
+}
+
 resource "aws_internet_gateway" "igw" {
-  count  = "${var.create_igw}" == true ? 1 : 0
   vpc_id = "${aws_vpc.new_vpc.id}"
   tags = {
     Name = "${var.tag} IGW"
@@ -62,7 +61,7 @@ resource "aws_route_table" "PublicRT" {
   vpc_id =  "${aws_vpc.new_vpc.id}"
   route {
     cidr_block = "0.0.0.0/0"
-    gateway_id = "${aws_internet_gateway.igw[0].id}"
+    gateway_id = "${aws_internet_gateway.igw.id}"
   }
   tags = {
     Name = "${var.tag} Public"
