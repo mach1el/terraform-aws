@@ -2,9 +2,26 @@
 variable aws_region {}
 
 // Networking
-variable vpc_cdir_block {}
-variable private_net {}
-variable public_net {}
+variable vpc_cdir_block {
+  type        = string
+  description = "Set your VPC IPs range" 
+}
+
+variable enable_dns_hostnames {
+  type        = bool
+  description = "A boolean flag to enable/disable DNS hostnames in the VPC. Defaults false."
+  default     = false
+}
+
+variable private_net {
+  type        = list
+  description = "List of your private subnets"
+}
+
+variable public_net {
+  type        = list
+  description = "List of your public subnets"
+}
 
 variable tag {
   type    = string
