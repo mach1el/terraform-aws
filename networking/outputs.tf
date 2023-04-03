@@ -11,7 +11,7 @@ output private_subnets_id {
 }
 
 output igw_id {
-  value = aws_internet_gateway.igw[0].id
+  value = aws_internet_gateway.igw.id
 }
 
 output natgw_id {
