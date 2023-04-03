@@ -11,11 +11,11 @@ output private_subnets_id {
 }
 
 output igw_id {
-  value = aws_internet_gateway.igw.id
+  value = aws_internet_gateway.igw[0].id
 }
 
 output natgw_id {
-  value = aws_nat_gateway.NATgw.id
+  value = aws_nat_gateway.NATgw[0].id
 }
 
 output public_route_table_id {
