@@ -41,11 +41,24 @@ variable public_subnet_tags {
 }
 
 // Conditions
+variable create_public_subnet {
+  type    = bool
+  default = true
+}
+
 variable create_private_subnet {
   type    = bool
   default = true
 }
-variable create_public_subnet {
-  type    = bool
-  default = true
+
+variable create_public_rtb {
+  type        = bool
+  default     = true
+  description = "Optional to create default public route table"
+}
+
+variable create_private_rtb {
+  type        = bool
+  default     = true
+  description = "Optional to create default private route table"
 }

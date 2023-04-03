@@ -58,7 +58,7 @@ resource "aws_nat_gateway" "NATgw" {
 }
 
 resource "aws_route_table" "PublicRT" {
-  count  = "${var.create_public_subnet}" == true ? 1 : 0
+  count  = "${var.create_public_rtb}" == true ? 1 : 0
   vpc_id =  "${aws_vpc.new_vpc.id}"
   route {
     cidr_block = "0.0.0.0/0"
@@ -70,7 +70,7 @@ resource "aws_route_table" "PublicRT" {
 }
 
 resource "aws_route_table" "PrivateRT" {
-  count  = "${var.create_private_subnet}" == true ? 1 : 0
+  count  = "${var.create_private_rtb}" == true ? 1 : 0
   vpc_id = "${aws_vpc.new_vpc.id}"
   route {
     cidr_block = "0.0.0.0/0"
@@ -82,13 +82,13 @@ resource "aws_route_table" "PrivateRT" {
 }
 
 resource "aws_route_table_association" "PublicRTassociation" {
-  count          = "${var.create_public_subnet}" == true ? "${length(aws_subnet.public_subnet)}" : 0
+  count          = "${var.create_public_rtb}" == true ? "${length(aws_subnet.public_subnet)}" : 0
   subnet_id      = "${aws_subnet.public_subnet[count.index].id}"
   route_table_id = "${aws_route_table.PublicRT[0].id}"
 }
 
 resource "aws_route_table_association" "PrivateRTassociation" {
-  count          = "${var.create_private_subnet}" == true ? "${length(aws_subnet.private_subnet)}" : 0
+  count          = "${var.create_private_rtb}" == true ? "${length(aws_subnet.private_subnet)}" : 0
   subnet_id      = "${aws_subnet.private_subnet[count.index].id}"
   route_table_id = "${aws_route_table.PrivateRT[0].id}"
 }
