@@ -6,7 +6,7 @@ module "iam_roles" {
 module "vpc" {
   source                = "git::https://github.com/mach1el/terraform-aws.git//networking"
   aws_region            = var.aws_region
-  vpc_cdir_block        = var.vpc_cdir_block
+  vpc_cidr_block        = var.vpc_cidr_block
   private_net           = var.private_net
   public_net            = var.public_net
   tag                   = var.tag

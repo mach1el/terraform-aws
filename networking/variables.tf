@@ -2,7 +2,7 @@
 variable aws_region {}
 
 // Networking
-variable vpc_cdir_block {
+variable vpc_cidr_block {
   type        = string
   description = "Set your VPC IPs range" 
 }

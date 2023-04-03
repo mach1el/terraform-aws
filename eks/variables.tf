@@ -2,8 +2,8 @@
 variable "aws_region" {}
 
 // VPC
-variable "vpc_cdir_block" {
-  description = "Set CDIR range for your EKS VPC cluster" 
+variable "vpc_cidr_block" {
+  description = "Set cidr range for your EKS VPC cluster" 
   type        = string
 }
 variable "private_net" {
