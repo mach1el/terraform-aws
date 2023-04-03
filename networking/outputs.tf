@@ -15,7 +15,7 @@ output igw_id {
 }
 
 output natgw_id {
-  value = var.create_private_subnet ? aws_nat_gateway.NATgw[0].id : []
+  value = var.create_private_subnet ? aws_nat_gateway.NATgw.*.id : []
 }
 
 output public_route_table_id {
