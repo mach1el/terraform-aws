@@ -8,7 +8,7 @@ resource "aws_vpc" "new_vpc" {
 }
 
 resource "aws_subnet" "public_subnet" {
-  count             = "${var.create_public_subnet}" == true ? "${length(var.private_net)}" : 0
+  count             = "${var.create_public_subnet}" == true ? "${length(var.public_net)}" : 0
   vpc_id            = "${aws_vpc.new_vpc.id}"
   cidr_block        = "${var.public_net[count.index]}"
   availability_zone = "${data.aws_availability_zones.available.names[count.index]}"
