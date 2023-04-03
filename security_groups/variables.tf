@@ -9,6 +9,6 @@ variable "vpc_id" {
 
 // Security groups
 variable "sgData" {
-  type        = map
-  description = "Map of data which required for creating security group(s)"
+  type        = list
+  description = "List of rules which required for creating security group(s)"
 }
