@@ -2,7 +2,7 @@
 variable "aws_region" {}
 
 // IAM roles
-variable "role_name" {
+variable "cluster_role_name" {
   type        = string
   default     = "MyApp-cluster-role"
   description = "Set IAM role name which is being used for EKS cluster"
