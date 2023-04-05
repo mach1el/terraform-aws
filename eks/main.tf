@@ -13,7 +13,7 @@ resource "aws_eks_cluster" "this" {
     endpoint_private_access = true
   }
 
-  enabled_cluster_log_types = "${var.cluster_log_type}"
+  enabled_cluster_log_types = "${var.cluster_log_types}"
   
   depends_on = [ module.iam_roles ]
 }
