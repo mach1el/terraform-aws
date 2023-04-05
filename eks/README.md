@@ -1,56 +1,52 @@
-# Terraform AWS Network - VPC | Subnet | Route Table | IGW | NAT gateway | Elastic IPs
+# Terraform AWS EKS cluster
 
-* Using conditions for creating Public Subnet and Private Subnet
-* Will create public subnet as default
+* Provisioning AWS EKS cluster with Terraform
 
 ## Example
 Put this configuration into your inventory
 
 ```
-module "networking" {
-  source         = "git::https://github.com/mach1el/terraform-aws.git//eks"
-  role_name      = "MyApp-cluster-roles"
-  aws_region     = "us-east-2"
-  vpc_cidr_block = "10.10.98.0/16"
-  private_net    = ["10.98.1.0/24","10.98.2.0/24"]
-  public_net     = ["10.98.10.0/24","10.98.11.0/24"]
-  tag            = "MyApp-cluster"
+module "eks" {
+  source            = "git::https://github.com/mach1el/terraform-aws.git//eks"
+  aws_region        = "us-east-2"
+  cluster_role_name = "PhantomClusterRoles"
+  cluster_name      = "Phantom Cluster"
+  kube_version      = "1.24"
+  subnet_ids        = ["subnet-123","subnet-456"]
 }
 ```
 
 You can also put variables into `terraform.tfvars`, it must same path with `main.tf` inventory
 
 ```
-module "networking" {
-  source         = "git::https://github.com/mach1el/terraform-aws.git//eks"
-  role_name      = var.role_name
-  aws_region     = var.aws_region
-  vpc_cidr_block = var.vpc_cidr_block
-  private_net    = var.private_net
-  public_net     = var.public_net
-  tag            = var.tag
+module "eks" {
+  source            = "git::https://github.com/mach1el/terraform-aws.git//eks"
+  aws_region        = var.aws_region
+  cluster_role_name = var.cluster_role_name
+  cluster_name      = var.cluster_name
+  kube_version      = var.kube_version
+  subnet_ids        = var.subnet_ids
 }
 ```
 
 `terraform.tfvars`
 
 ```
-// Provider
-aws_region = "ap-southeast-1"
-// IAM
-role_name = "MyApp-cluster-roles"
-// Network
-vpc_cidr_block = "10.98.0.0/16"
-private_net    = ["10.98.1.0/24","10.98.2.0/24"]
-public_net     = ["10.98.10.0/24","10.98.11.0/24"]
+aws_region        = "us-east-2"
+cluster_role_name = "PhantomClusterRoles"
+cluster_name      = "Phantom Cluster"
+kube_version      = "1.24"
+subnet_ids        = ["subnet-123","subnet-456"]
 ```
 
 ## Input
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 |<a name="aws_region"></a> [aws_region](#) | Select your region | `string` | `null` | yes |
-|<a name="role_name"></a> [role_name](#) | Set your IAM role name for EKS cluster | `string` | `MyApp-cluster-roles` | no |
-|<a name="vpc_cidr_block"></a> [vpc_cidr_block](#) | Your VPC range | `string` | `null` | yes |
-|<a name="private_net"></a> [private_net](#) | List of subnets range | `list` | `null` | yes |
-|<a name="public_net"></a> [public_net](#) | List of subnets range | `list` | `null` | yes |
-|<a name="tag"></a> [tag](#) | Tag your resource | `string` | `MyApp-cluster` | no |
+|<a name="cluster_role_name"></a> [cluster_role_name](#) | Set cluster role name | `string` | `MyApp-cluster-roles` | yes |
+|<a name="cluster_name"></a> [cluster_name](#) | Naming your cluster | `string` | `Phantom` | yes |
+|<a name="kube_version"></a> [kube_version](#) | Pick kubernetes version | `string` | `null` | yes |
+|<a name="subnet_ids"></a> [subnet_ids](#) | List of available subnets | `list` | `null` | yes |
+|<a name="cluster_log_types"></a> [cluster_log_types](#) | Enable logging specify type for control panel | `list` | `["api", "audit", "authenticator", "controllerManager", "scheduler"]` | no |
+|<a name="enable_kube_proxy_addon"></a> [enable_kube_proxy_addon](#) | Enable addon for control panel | `bool` | `true` | no |
+|<a name="addon_conf"></a> [addon_conf](#) | Optional configure addons | `map(any)` | `{ most_recent = true }` | no |
