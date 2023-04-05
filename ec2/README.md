@@ -16,9 +16,11 @@ module "ec2" {
       "subnet_id" : "subnet-12345",
       "ssh_key_name" : "vpc",
       "vpc_security_group_ids" : ["sg-123abc"],
+      "public_ip" : "false",
       "volume_size" : "40",
       "volume_type" : "gp3",
-      "system_name" : "Demo"
+      "system_name" : "Demo",
+      "count" : 1
     }
   ]
 }
@@ -48,9 +50,11 @@ configuration = [
     "subnet_id" : "subnet-12345",
     "ssh_key_name" : "vpc",
     "vpc_security_group_ids" : ["sg-123abc"],
+    "public_ip" : "false",
     "volume_size" : "40",
     "volume_type" : "gp3",
-    "system_name" : "Demo"
+    "system_name" : "Demo",
+    "count" : 1
   }
 ]
 ```
