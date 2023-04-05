@@ -1,28 +1,32 @@
 // Providers
 variable "aws_region" {}
 
-// VPC
-variable "vpc_cidr_block" {
-  description = "Set cidr range for your EKS VPC cluster" 
-  type        = string
-}
-variable "private_net" {
-  description = "List of private subnets which nodes are being created on it"
-  type        = list(string)
-}
-variable "public_net"  {
-  description = "List of public subnets which nodes are being created on it"
-  type        = list(string)
-}
-variable "tag" {
-  description = "Tag your resource"
-  type        = string
-  default     = "MyApp-cluster"
-}
-
 // IAM roles
 variable "role_name" {
-  description = "Set IAM role name which is being used for EKS cluster"
   type        = string
   default     = "MyApp-cluster-role"
+  description = "Set IAM role name which is being used for EKS cluster"
+}
+
+// EKS
+variable "kube_version" {
+  type        = any
+  default     = null
+  description = "Pick available kubernetest version"
+}
+
+variable "subnet_ids" {
+  type        = list
+  description = "List of available subnets"
+}
+
+variable "enable_kube_proxy_addon" {
+  type        = bool
+  default     = true
+  description = "Optional to enable kube proxy add-on in cluster"
+}
+
+variable "kube_proxy_addon_ver" {
+  type        = string
+  description = "Pick version for kube proxy add-on"
 }

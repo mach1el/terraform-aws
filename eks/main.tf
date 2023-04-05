@@ -1,42 +1,30 @@
 module "iam_roles" {
   source    = "./modules/iam_roles"
-  role_name = "MyApp-cluster-roles"
+  role_name = var.cluster_role_name
 }
 
-module "vpc" {
-  source                = "git::https://github.com/mach1el/terraform-aws.git//networking"
-  aws_region            = var.aws_region
-  vpc_cidr_block        = var.vpc_cidr_block
-  private_net           = var.private_net
-  public_net            = var.public_net
-  tag                   = var.tag
-  private_subnet_tags   = {
-    "kubernetes.io/cluster/${var.tag}" = "shared"
+resource "aws_eks_cluster" "this" {
+  name     = "${var.tag}"
+  version  = "${local.kube_version}"
+  role_arn = module.iam_roles.this_cluster.arn
+
+  vpc_config {
+    subnet_ids = "${var.subnet_ids}"
+    endpoint_private_access = true
   }
-  public_subnet_tags    = {
-    "kubernetes.io/cluster/${var.tag}" = "shared"
-  }
+
+  enabled_cluster_log_types = ["api", "audit", "authenticator", "controllerManager", "scheduler"]
+  
+  depends_on = [ module.iam_roles ]
 }
 
-# output public_subnet_ids {
-#   value = module.vpc.public_subnet_ids
-# }
+/* resource "aws_eks_addon" "kube_proxy" {
+  count = var.enable_kube_proxy_addon ? 1 : 0
 
-locals {
-  # private_subnet_ids = module.vpc.private_subnet_ids : ?
-  available_subnets = try(concat(module.vpc.private_subnet_ids,module.vpc.public_subnet_ids),"Got null variable")
-}
-
-# resource "aws_eks_cluster" "this" {
-#   name     = "${var.tag}"
-#   role_arn = module.iam_roles.this_cluster.arn
-
-#   vpc_config {
-#     subnet_ids = local.available_subnets
-#   }
-
-  # depends_on = [
-  #   "module.iam_roles.aws_iam_role_policy_attachment.AmazonEKSClusterPolicy",
-  #   "module.iam_roles.aws_iam_role_policy_attachment.AmazonEKSServicePolicy",
-  # ]
-# }
+  cluster_name      = aws_eks_cluster.this.name
+  addon_name        = "kube-proxy"
+  resolve_conflicts = "OVERWRITE"
+  addon_version     = var.addon_kube_proxy_version
+  
+  tags = var.addon_tags
+} */
