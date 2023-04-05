@@ -3,7 +3,7 @@ locals {
     for srv in var.configuration : [
       for i in range(srv.count) : {
         ami             = srv.ami
-        instance_name   = "${srv.service_name}-${srv.count}"
+        instance_name   = "${srv.service_name}-${i}"
         instance_type   = srv.instance_type
         subnet_id       = srv.subnet_id
         ssh_key_name    = srv.ssh_key_name
