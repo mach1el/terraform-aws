@@ -1,7 +1,7 @@
 locals {
   serverconfig = [
     for srv in var.configuration : [
-      for i in range(srv.count) : {
+      for i in range(1,srv.count+1) : {
         ami             = srv.ami
         instance_name   = "${srv.service_name}-${i}"
         instance_type   = srv.instance_type
