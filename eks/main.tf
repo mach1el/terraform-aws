@@ -5,7 +5,7 @@ module "iam_roles" {
 
 resource "aws_eks_cluster" "this" {
   name     = "${var.tag}"
-  version  = "${local.kube_version}"
+  version  = "${var.kube_version}"
   role_arn = module.iam_roles.this_cluster.arn
 
   vpc_config {
