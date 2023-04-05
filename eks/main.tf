@@ -23,9 +23,9 @@ resource "aws_eks_addon" "kube_proxy" {
 
   cluster_name             = aws_eks_cluster.this.id
   addon_name               = "kube-proxy"
-  resolve_conflicts        = try("${var.kube_proxy_conf.resolve_conflicts}","OVERWRITE")
-  addon_version            = try("${var.kube_proxy_conf.addon_version}","${data.aws_eks_addon_version.kube-proxy.version}")
-  service_account_role_arn = try("${var.kube_proxy_conf.service_account_role_arn}", null)
-  preserve                 = try("${var.kube_proxy_conf.preserve}", true)
-  /* tags = var.addon_tags */
+  resolve_conflicts        = try("${var.addon_conf.resolve_conflicts}","OVERWRITE")
+  addon_version            = try("${var.addon_conf.kube_proxy_ver}","${data.aws_eks_addon_version.kube-proxy.version}")
+  service_account_role_arn = try("${var.addon_conf.service_account_role_arn}", null)
+  preserve                 = try("${var.addon_conf.preserve}", true)
+  tags                     = try("${var.addon_conf.addon_tags}",{})
 }

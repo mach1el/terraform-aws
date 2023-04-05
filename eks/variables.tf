@@ -38,10 +38,10 @@ variable "enable_kube_proxy_addon" {
   description = "Optional to enable kube proxy add-on in cluster"
 }
 
-variable "kube_proxy_conf" {
-  type        = map(string)
+variable "addon_conf" {
+  type        = map(any)
   default     = {
     most_recent = true
   }
-  description = "Optional configure kube_proxy addon"
+  description = "Optional configure addons"
 }
