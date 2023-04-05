@@ -20,7 +20,7 @@ variable "subnet_ids" {
   description = "List of available subnets"
 }
 
-variable "enable_kube_proxy_addon" {
+/* variable "enable_kube_proxy_addon" {
   type        = bool
   default     = true
   description = "Optional to enable kube proxy add-on in cluster"
@@ -29,4 +29,4 @@ variable "enable_kube_proxy_addon" {
 variable "kube_proxy_addon_ver" {
   type        = string
   description = "Pick version for kube proxy add-on"
-}
+} */
