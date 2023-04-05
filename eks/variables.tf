@@ -9,6 +9,12 @@ variable "cluster_role_name" {
 }
 
 // EKS
+variable "cluster_name" {
+  type        = string
+  default     = "Phantom"
+  description = "Naming your cluster"
+}
+
 variable "kube_version" {
   type        = any
   default     = null

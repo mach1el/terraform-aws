@@ -4,7 +4,7 @@ module "iam_roles" {
 }
 
 resource "aws_eks_cluster" "this" {
-  name     = "${var.tag}"
+  name     = "${var.cluster_name}"
   version  = "${var.kube_version}"
   role_arn = module.iam_roles.this_cluster.arn
 
