@@ -26,13 +26,22 @@ variable "subnet_ids" {
   description = "List of available subnets"
 }
 
-/* variable "enable_kube_proxy_addon" {
+variable "cluster_log_types" {
+  type        = list
+  default     = ["api", "audit", "authenticator", "controllerManager", "scheduler"]
+  description = "Enable logging specify type for control panel"
+}
+
+variable "enable_kube_proxy_addon" {
   type        = bool
   default     = true
   description = "Optional to enable kube proxy add-on in cluster"
 }
 
-variable "kube_proxy_addon_ver" {
-  type        = string
-  description = "Pick version for kube proxy add-on"
-} */
+variable "kube_proxy_conf" {
+  type        = map(string)
+  default     = {
+    most_recent = true
+  }
+  description = "Optional configure kube_proxy addon"
+}
