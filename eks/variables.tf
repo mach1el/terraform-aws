@@ -21,8 +21,8 @@ variable "kube_version" {
   description = "Pick available kubernetest version"
 }
 
-variable "subnet_ids" {
-  type        = list
+variable "eks_vpc_config" {
+  type        = map(any)
   description = "List of available subnets"
 }
 
@@ -38,10 +38,20 @@ variable "enable_kube_proxy_addon" {
   description = "Optional to enable kube proxy add-on in cluster"
 }
 
+variable "enable_coredns_addon" {
+  type        = bool
+  default     = true
+  description = "Optional to enable coredns add-on in cluster"
+}
+
+variable "enable_vpc_cni_addon" {
+  type        = bool
+  default     = true
+  description = "Optional to enable vpc-cni add-on in cluster"
+}
+
 variable "addon_conf" {
   type        = map(any)
-  default     = {
-    most_recent = true
-  }
+  default     = {}
   description = "Optional configure addons"
 }
