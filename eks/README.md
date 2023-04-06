@@ -46,7 +46,9 @@ subnet_ids        = ["subnet-123","subnet-456"]
 |<a name="cluster_role_name"></a> [cluster_role_name](#) | Set cluster role name | `string` | `MyApp-cluster-roles` | yes |
 |<a name="cluster_name"></a> [cluster_name](#) | Naming your cluster | `string` | `Phantom` | yes |
 |<a name="kube_version"></a> [kube_version](#) | Pick kubernetes version | `string` | `null` | yes |
-|<a name="subnet_ids"></a> [subnet_ids](#) | List of available subnets | `list` | `null` | yes |
+|<a name="eks_vpc_config"></a> [eks_vpc_config](#) | Map of vpc_config argument | `map(any)` | `null` | yes |
 |<a name="cluster_log_types"></a> [cluster_log_types](#) | Enable logging specify type for control panel | `list` | `["api", "audit", "authenticator", "controllerManager", "scheduler"]` | no |
-|<a name="enable_kube_proxy_addon"></a> [enable_kube_proxy_addon](#) | Enable addon for control panel | `bool` | `true` | no |
+|<a name="enable_kube_proxy_addon"></a> [enable_kube_proxy_addon](#) | Enable kube-proxy addon for control panel | `bool` | `true` | no |
+|<a name="enable_coredns_addon"></a> [enable_coredns_addon](#) | Enable coredns addon for control panel | `bool` | `true` | no |
+|<a name="enable_vpc_cni_addon"></a> [enable_vpc_cni_addon](#) | Enable vpc-cni addon for control panel | `bool` | `true` | no |
 |<a name="addon_conf"></a> [addon_conf](#) | Optional configure addons | `map(any)` | `{ most_recent = true }` | no |
