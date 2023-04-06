@@ -22,8 +22,8 @@ variable "kube_version" {
 }
 
 variable "eks_vpc_config" {
-  type        = map(any)
-  description = "List of available subnets"
+  type        = any
+  description = "List of available subnets" 
 }
 
 variable "cluster_log_types" {
