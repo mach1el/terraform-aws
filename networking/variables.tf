@@ -7,19 +7,33 @@ variable vpc_cidr_block {
   description = "Set your VPC IPs range" 
 }
 
+variable instance_tenancy {
+  type        = string
+  default     = "default"
+  description = "Optional a tenancy option for instances launched into the VPC"
+}
+
 variable enable_dns_hostnames {
   type        = bool
-  description = "A boolean flag to enable/disable DNS hostnames in the VPC. Defaults false."
   default     = false
+  description = "A boolean flag to enable/disable DNS hostnames in the VPC."
+}
+
+variable enable_dns_support {
+  type        = bool
+  default     = true
+  description = "A boolean flag to enable/disable DNS support in the VPC."
 }
 
 variable private_net {
   type        = list
+  default     = []
   description = "List of your private subnets"
 }
 
 variable public_net {
   type        = list
+  default     = []
   description = "List of your public subnets"
 }
 
