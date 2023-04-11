@@ -1,3 +1,3 @@
-output this_cluster {
-  value = aws_iam_role.this_cluster
+output cluster_nodes_role {
+  value = aws_iam_role.cluster_nodes
 }
