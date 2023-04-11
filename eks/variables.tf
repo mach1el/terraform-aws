@@ -10,7 +10,7 @@ variable "cluster_role_name" {
 
 variable "node_role_name" {
   type        = string
-  default     = "MyApp-cluster-role"
+  default     = "MyApp-cluster-nodes-role"
   description = "Set IAM role name which is being used for EKS nodes group"
 }
 

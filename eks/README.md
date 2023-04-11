@@ -44,6 +44,7 @@ subnet_ids        = ["subnet-123","subnet-456"]
 |------|-------------|------|---------|:--------:|
 |<a name="aws_region"></a> [aws_region](#) | Select your region | `string` | `null` | yes |
 |<a name="cluster_role_name"></a> [cluster_role_name](#) | Set cluster role name | `string` | `MyApp-cluster-roles` | yes |
+|<a name="node_role_name"></a> [node_role_name](#) | Set node group role name | `string` | `MyApp-cluster-node-roles` | yes |
 |<a name="cluster_name"></a> [cluster_name](#) | Naming your cluster | `string` | `Phantom` | yes |
 |<a name="kube_version"></a> [kube_version](#) | Pick kubernetes version | `string` | `null` | yes |
 |<a name="eks_vpc_config"></a> [eks_vpc_config](#) | Map of vpc_config argument | `map(any)` | `null` | yes |
