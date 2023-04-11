@@ -11,7 +11,7 @@ module "iam_node_roles" {
 resource "aws_eks_cluster" "this" {
   name     = "${var.cluster_name}"
   version  = "${var.kube_version}"
-  role_arn = "${module.iam_cluster_roles.this_cluster.arn}"
+  role_arn = "${module.iam_cluster_roles.this_cluster_role.arn}"
 
   vpc_config {
     subnet_ids              = lookup(var.eks_vpc_config,"subnet_ids",[])
