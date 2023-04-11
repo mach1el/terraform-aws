@@ -1,12 +1,17 @@
-module "iam_roles" {
-  source    = "./modules/iam_roles"
-  role_name = var.cluster_role_name
+module "iam_cluster_roles" {
+  source    = "./modules/iam_cluster_roles"
+  role_name = "${var.cluster_role_name}"
+}
+
+module "iam_node_roles" {
+  source    = "./modules/iam_node_roles"
+  role_name = "${var.node_role_name}"
 }
 
 resource "aws_eks_cluster" "this" {
   name     = "${var.cluster_name}"
   version  = "${var.kube_version}"
-  role_arn = "${module.iam_roles.this_cluster.arn}"
+  role_arn = "${module.iam_cluster_roles.this_cluster.arn}"
 
   vpc_config {
     subnet_ids              = lookup(var.eks_vpc_config,"subnet_ids",[])
@@ -18,7 +23,7 @@ resource "aws_eks_cluster" "this" {
 
   enabled_cluster_log_types = "${var.cluster_log_types}"
   
-  depends_on = [ module.iam_roles ]
+  depends_on = [ module.iam_cluster_roles ]
 }
 
 resource "aws_eks_addon" "kube_proxy" {
