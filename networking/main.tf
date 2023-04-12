@@ -9,10 +9,11 @@ resource "aws_vpc" "new_vpc" {
 }
 
 resource "aws_subnet" "public_subnet" {
-  count             = "${var.create_public_subnet}" == true ? "${length(var.public_net)}" : 0
-  vpc_id            = "${aws_vpc.new_vpc.id}"
-  cidr_block        = "${var.public_net[count.index]}"
-  availability_zone = "${data.aws_availability_zones.available.names[count.index]}"
+  count                   = "${var.create_public_subnet}" == true ? "${length(var.public_net)}" : 0
+  vpc_id                  = "${aws_vpc.new_vpc.id}"
+  cidr_block              = "${var.public_net[count.index]}"
+  availability_zone       = "${data.aws_availability_zones.available.names[count.index]}"
+  map_public_ip_on_launch = "${var.enable_public_ip}"
   tags = merge(
     {
       Name = "${var.tag}-${1+count.index} Public"

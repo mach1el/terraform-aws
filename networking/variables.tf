@@ -55,6 +55,12 @@ variable public_subnet_tags {
 }
 
 // Conditions
+variable enable_public_ip {
+  type        = bool
+  default     = true
+  description = "Optional to enable/disable auto mapping public IP on public subnet"
+}
+
 variable create_public_subnet {
   type    = bool
   default = true
